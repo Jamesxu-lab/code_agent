@@ -1,4 +1,4 @@
-# code_agent：coding agent的MVP
+# code_agent：coding agent的最小可行方案
 
 ---
 
