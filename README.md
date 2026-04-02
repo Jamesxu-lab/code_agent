@@ -2,7 +2,6 @@
 
 > **“AI 驱动 AI：一个由 Claude Code + MiniMax 2.5 协同生成的自主编程助手原型。”**
 > 
-> `Python 3.10+` | `ReAct Pattern` | `Qwen/Kimi/MiniMax Support` | `Human-in-the-loop`| ‘educational’
 
 ---
 
@@ -20,16 +19,27 @@
 
 代码段
 
+
 ```
-graph TD
-    User((用户任务)) --> Engine{ReAct Engine}
-    Engine --> Thought[Thought: 逻辑思考/拆解]
-    Thought --> Action[Action: 调用工具调用]
-    Action --> Tools[Tools: 文件/命令/调试]
-    Tools --> Observation[Observation: 观察执行结果]
-    Observation --> Engine
-    Engine -- 任务完成 --> Result((最终输出))
-    Engine -- 达到迭代上限 --> Stop[强制停止/报错]
+用户输入任务
+    │
+    ▼
+┌─────────────────────────────────┐
+│  1. 构建 System Prompt            │
+│  2. 调用 LLM (绑定工具)         │
+└─────────────────────────────────┘
+    │
+    ▼
+┌─────────────────────────────────┐
+│  3. 检测工具调用                │
+│     ├── 有 → 执行工具 → 观察     │
+│     └── 无 → 返回结果           │
+└─────────────────────────────────┘
+    │
+    ▼
+  是否达到迭代上限?
+    │
+   是 → 返回结果
 ```
 
 ---
