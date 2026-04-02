@@ -1,4 +1,4 @@
-# code_agent：一个由 Claude Code + MiniMax 2.5 协同生成的自主编程助手原型
+# code_agent：coding agent的MVP
 
 ---
 
